@@ -55,5 +55,28 @@
       </li>
     </ul>
   </section>
+  <script>
+  const button = document.querySelector(".theme-toggle");
+
+  function applyTheme(theme) {
+    if (theme === "light") {
+      document.body.classList.add("light-mode");
+      button.textContent = "Switch to dark mode";
+    } else {
+      document.body.classList.remove("light-mode");
+      button.textContent = "Switch to light mode";
+    }
+  }
+
+  function toggleTheme() {
+    const isLight = document.body.classList.contains("light-mode");
+    const newTheme = isLight ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+    applyTheme(newTheme);
+  }
+
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  applyTheme(savedTheme);
+  </script>
 </body>
 </html>
